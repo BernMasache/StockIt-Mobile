@@ -98,45 +98,46 @@ export default function SettingsScreen() {
         </View>
         <TextInput placeholder="Date collected" keyboardType="numeric" />
         <TextInput placeholder="Collection" keyboardType="numeric" />
+
         <View
           style={{
             width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems:"center",
+            justifyContent: "space-between",
           }}
         >
-          <View >
-            <Text style={[styles.label, isFocus && { color: "blue" }]}>
-              Rent per day
-            </Text>
-            <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={data}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={!isFocus ? "Select rental rate" : "..."}
-              searchPlaceholder="Search..."
-              value={value}
-              // onFocus={() => setIsFocus(true)}
-              // onBlur={() => setIsFocus(false)}
-              onChange={(item) => {
-                setValue(item.value);
-                setIsFocus(false);
-              }}
-              // renderLeftIcon={() => (
-              //   <AntDesign
-              //     style={styles.icon}
-              //     color={isFocus ? "blue" : "black"}
-              //     name="Safety"
-              //     size={20}
-              //   />
-              // )}
-            />
-          </View>
+          <Text style={{ width: "30%" }}>Rent per day :</Text>
+          <Dropdown
+            style={{ width: "70%" }}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder={!isFocus ? "Select rental rate" : "..."}
+            searchPlaceholder="Search..."
+            value={value}
+            // onFocus={() => setIsFocus(true)}
+            // onBlur={() => setIsFocus(false)}
+            onChange={(item) => {
+              setValue(item.value);
+              setIsFocus(false);
+            }}
+            // renderLeftIcon={() => (
+            //   <AntDesign
+            //     style={styles.icon}
+            //     color={isFocus ? "blue" : "black"}
+            //     name="Safety"
+            //     size={20}
+            //   />
+            // )}
+          />
         </View>
         <TextInput placeholder="Shop share" keyboardType="numeric" />
         <TextInput placeholder="Expenses" keyboardType="numeric" />

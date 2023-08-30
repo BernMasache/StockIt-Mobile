@@ -22,7 +22,11 @@ function App() {
           options={{
             tabBarLabel: "Collections",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="reorder-horizontal" color={color} size={26} />
+              <MaterialCommunityIcons
+                name="reorder-horizontal"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />
@@ -32,7 +36,11 @@ function App() {
           options={{
             tabBarLabel: "New ",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="database-plus" color={color} size={26} />
+              <MaterialCommunityIcons
+                name="database-plus"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />
