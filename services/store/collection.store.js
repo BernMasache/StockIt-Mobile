@@ -12,8 +12,8 @@ export default class UseCollectionStore {
     const collections = await useCollectionService.getCollections();
     return collections;
   };
-  create = async (data) => {
-    const response = await useCollectionService.createCollection(data);
+  create = async ({payload, collections}) => {
+    const response = await useCollectionService.createCollection({payload, collections});
     return response;
   };
   update = async (data) => {

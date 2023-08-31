@@ -9,12 +9,13 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 
 const Tab = createMaterialBottomTabNavigator();
 function App() {
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         activeColor="#f0edf6"
         inactiveColor="#f0ecf2"
-        barStyle={{ backgroundColor: "#b040f1" }}
+        barStyle={{ backgroundColor: "#5579c6" }}
       >
         <Tab.Screen
           name="Collections"
