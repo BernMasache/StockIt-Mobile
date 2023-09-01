@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   View,
   StyleSheet,
   TouchableOpacity,
   Alert,
-  Pressable,
   Text,
+  ToastAndroid,
 } from "react-native";
-
 import UseCollectionStore from "../services/store/collection.store";
 import { DataTable } from "react-native-paper";
-import { Col, Grid, Row } from "react-native-easy-grid";
 const collectionsStore = new UseCollectionStore();
 
 export default function HomeScreen(props) {
@@ -29,10 +26,30 @@ export default function HomeScreen(props) {
   };
   useEffect(() => {
     loadCollections();
-  }, [props]);
+  }, []);
 
-  const changeBackground = (event) => {
-    console.log(event);
+  const deleteCollection = (data) => {
+    {
+      Alert.alert(
+        (title = "Delete"),
+        (message = `Remove K${data?.collection} collected on ${data.dateCollected}`),
+        [
+          {
+            text: "No",
+            onPress: () => ToastAndroid.show("Cancelled", ToastAndroid.LONG),
+            style: "cancel",
+          },
+          {
+            text: "Yes",
+            onPress: () =>
+              ToastAndroid.show(
+                `Removed K${data?.collection} which was collected on ${data.dateCollected}`,
+                ToastAndroid.LONG
+              ),
+          },
+        ]
+      );
+    }
   };
 
   return (
@@ -68,10 +85,10 @@ export default function HomeScreen(props) {
             return key % 2 == 0 ? (
               <TouchableOpacity
                 key={key}
-                onPress={changeBackground}
+                onLongPress={() => deleteCollection(collection)}
                 style={{ marginBottom: 10, marginTop: 10 }}
               >
-                <DataTable.Row onLongPress={changeBackground}>
+                <DataTable.Row>
                   <DataTable.Cell>
                     {collection?.dateCollected?.split("/")[0]}-
                     {collection?.dateCollected?.split("/")[1]}-
@@ -84,7 +101,10 @@ export default function HomeScreen(props) {
                 </DataTable.Row>
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity key={key} onLongPress={changeBackground}>
+              <TouchableOpacity
+                key={key}
+                onLongPress={() => deleteCollection(collection)}
+              >
                 <DataTable.Row style={styles.container}>
                   <DataTable.Cell>
                     {collection?.dateCollected?.split("/")[0]}-
@@ -131,7 +151,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: "#f0edf6",
   },
-  textColor:{
+  textColor: {
     color: "#5579c6",
-  }
+  },
 });

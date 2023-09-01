@@ -276,7 +276,7 @@ export default function SettingsScreen(props) {
           }}
         >
           <View />
-          <Button title="Collect" onPress={collect} color="#5579c6" />
+          <Button title="Save" onPress={collect} color="#5579c6" />
         </View>
       </View>
     </View>
